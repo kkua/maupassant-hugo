@@ -8,24 +8,26 @@
         <div id="virtual_toc_list" style="display: none">
             {{.TableOfContents}}
         </div>
-        <div id="float_toc_div" style="margin: 10px;border: 1px solid gray;z-index:99999;display: none;">
+        <div id="float_toc_div">
             <header style="background-color: #f3f3f3;color: black;border-bottom: 1px solid gray;padding: 10px 10px 10px 10px;">
                 <strong id="toc_btn_open" style="color: black;font-size: large;">目录</strong>
                 <strong id="toc_btn_close" style="color: black;font-size: large;float: right">╳</strong>
             </header>
-            <div id="toc_list" style="background-color: #f3f3f3;color: black;padding: 10px;">
-        
+            <div id="toc_list" class="float-toc-nav" style="background-color: #f3f3f3;color: black;padding: 10px;overflow-y: auto;min-width: 70px;">
+
             </div>
         </div>
         <style type="text/css">
             #float_toc_div {
                 position: fixed;
                 display: none;
-                /* width: 10.6%; */
                 height: auto;
                 font-size: 13px;
+                margin: 10px;
+                border: 1px solid gray;
+                z-index:99999;
             }
-        
+
             #toc_list a:hover,
             #toc_list a:active {
                 color: #ba3925;
@@ -35,18 +37,20 @@
             window.onload = function () {
                 let tocNavElem = document.getElementById("TableOfContents");
                 let floatTocDivElem = document.getElementById("float_toc_div");
-                let tocListElem = floatTocDivElem.getElementsByTagName('div')[0];
+                let fixedTocElem = document.getElementsByClassName("toc-article")[0];
+                let floatTocListElem = floatTocDivElem.getElementsByTagName('div')[0];
                 let colGroupElem = document.getElementById("body").getElementsByClassName("col-group")[0]
-                let floatTocWidth = (document.body.clientWidth - colGroupElem.offsetWidth) / 2 - 16;
-                var useFloatToc = false;
-
-                if (floatTocWidth >= 100) {
-                    useFloatToc = true;
-                    document.getElementById("toc_list").appendChild(tocNavElem);
+                let floatTocMaxWidth = (document.body.clientWidth - colGroupElem.offsetWidth) * 19 / 42;
+                if (floatTocMaxWidth >= 100) {
+                    floatTocListElem.appendChild(tocNavElem);
                     floatTocDivElem.style.display = 'block';
-                    floatTocDivElem.style.width = floatTocWidth + 'px';
+                    if (floatTocListElem.offsetWidth > floatTocMaxWidth) {
+                        floatTocDivElem.style.width = floatTocMaxWidth + 'px';
+                    }
+                    floatTocListElem.style.maxHeight = window.screen.availHeight * 55 / 100 + 'px';
                     top();
                     floatTocDivElem.style.left = '0px';
+                    fixedTocElem.parentElement.remove();
 
                     function top() {
                         if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
@@ -56,30 +60,11 @@
                         }
                     }
 
-                    function ishide() {
-                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
-                            floatTocDivElem.style.top = '0px';
-                        } else {
-                            floatTocDivElem.style.display = 'block';
-                        }
-                    }
-
-                    window.onscroll = function () {
-                        ishide();
-                        if ((document.documentElement.scrollTop != 0) && (floatTocDivElem.style.display == 'block')) {
-                            top();
-                        }
-                    };
-
-                    window.onresize = function () {
-                        ishide();
-                    }
-
                     document.getElementById("toc_btn_open").addEventListener('click', function () {
-                        switch (tocListElem.style.display) {
+                        switch (floatTocListElem.style.display) {
                             case "none":
                                 document.getElementById("toc_btn_close").style.display = "";
-                                tocListElem.style.display = "";
+                                floatTocListElem.style.display = "";
                                 floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "1px solid gray";
                                 break;
                             default:
@@ -88,10 +73,10 @@
                     }, false);
 
                     document.getElementById("toc_btn_close").addEventListener('click', function () {
-                        switch (tocListElem.style.display) {
+                        switch (floatTocListElem.style.display) {
                             case "":
                                 document.getElementById("toc_btn_close").style.display = "none";
-                                tocListElem.style.display = "none";
+                                floatTocListElem.style.display = "none";
                                 floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "";
                                 break;
                             default:
@@ -99,9 +84,9 @@
                         }
                     }, false);
                 } else {
-                    let fixedTocElem = document.getElementsByClassName("toc-article")[0];
                     fixedTocElem.appendChild(tocNavElem);
                     fixedTocElem.parentElement.style.display = "";
+                    floatTocDivElem.remove();
                 }
                 document.getElementById("virtual_toc_list").remove();
             };   

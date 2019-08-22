@@ -383,7 +383,3 @@ disablePathToLower = true
 + Ghost: https://github.com/LjxPrime/maupassant/
 + Hexo: https://github.com/tufu9441/maupassant-hexo
 + Hugo: https://github.com/rujews/maupassant-hugo
-
-```
-
-```
