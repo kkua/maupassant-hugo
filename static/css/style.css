@@ -386,8 +386,10 @@ textarea {
     padding:3px 5px;
     border: 1px solid #ddd;
 }
+
 .post-content p {
     margin:0 0 1.1em;
+	text-indent: 2em;
 }
 .post-content img {
     padding:1em 0;
