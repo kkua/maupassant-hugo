@@ -15,7 +15,7 @@
 
 [class^="icon-"], [class*=" icon-"] {
     font-family: 'icomoon';
-    speak: none;
+    speak-as: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -223,8 +223,6 @@ textarea {
 #nav-menu a:first-child {
     border:none;
 }
-#nav-menu a:hover {
-}
 #nav-menu a.current {
     border:1px solid #ddd;
     border-bottom:1px solid #fff;
@@ -390,6 +388,13 @@ textarea {
 .post-content p {
     margin:0 0 1.1em;
 	text-indent: 2em;
+}
+.post-content li {
+	text-indent: .5em;
+}
+.post-content li p {
+    margin:0 0 1.1em;
+	text-indent: .5em;
 }
 .post-content img {
     padding:1em 0;
@@ -1065,9 +1070,7 @@ table tr th, table tr td {
 .toc-title {
     font-size: 120%; 
 }
-#TableOfContents {
-    
-}
+
 #TableOfContents ul {
     padding: 0;
     margin: 0.5em;
