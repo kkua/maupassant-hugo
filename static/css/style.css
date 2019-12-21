@@ -985,7 +985,9 @@ img.alignright {
     padding: 5px 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    float: right; 
+    float: right;
+    line-height: 1.15;
+    text-indent: 0px;
 }
 .readmore a:hover {
     background: #F8F8F8;
