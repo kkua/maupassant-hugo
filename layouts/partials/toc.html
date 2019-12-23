@@ -2,7 +2,8 @@
 <style type="text/css">
     .post-toc {
         position: fixed;
-        margin-left: -210px;
+        width: 260px;
+        margin-left: -270px;
         padding: 5px 10px;
         font-family: Athelas, STHeiti, Microsoft Yahei, serif;
         font-size: 12px;
@@ -40,7 +41,7 @@
 
     .post-toc .post-toc-content ul {
         padding-left: 20px;
-        list-style: square;
+        list-style: none;
         margin: 0.5em;
         line-height: 1.8em;
     }
@@ -77,7 +78,7 @@
                 return;
             }
             postToc.show();
-            if (leftPos < 220) {
+            if (leftPos < 270) {
                 postToc.css({ "width": leftPos - 10, "margin-left": (5 - leftPos) })
             }
             var t = postToc.offset().top - 20,
