@@ -376,7 +376,14 @@ textarea {
 .post-content code{
     display:inline;
 }
-
+.post-content p code{
+    display:inline;
+    padding: .2em .4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: #f3f4f4;
+    border-radius: 3px;
+}
 .post-content p {
     margin:0 0 1.1em;
 	text-indent: 2em;
