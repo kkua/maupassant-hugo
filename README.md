@@ -252,6 +252,15 @@ summaryLength = 140
 
 其他还有几个不常用，这里就不再赘述了。
 
+#### 右上角GitHub链接（基于GitHub Corners）
+
+可在配置在右上角显示GitHub图标（基于[github-corners](https://github.com/tholman/github-corners)）点击跳转到自己的Github主页，将`prarms`的`githubAccount`配置项设置为自己的GitHub账号即可，如下所示
+
+```toml
+[params]
+  githubAccount = "username"
+```
+
 #### 不蒜子页面计数器支持
 
 该主题支持不蒜子这个极简的页面计数器支持，如果要启用不蒜子，可以在`config.toml`里添加如下配置即可.
