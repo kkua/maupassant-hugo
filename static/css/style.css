@@ -373,16 +373,19 @@ textarea {
 .post-content pre{
     padding: 1em;
 }
-.post-content code{
-    display:inline;
-}
-.post-content p code{
+.post-content code {
     display:inline;
     padding: .2em .4em;
     margin: 0;
     font-size: 85%;
     background-color: rgba(27, 31, 35, 0.05);
     border-radius: 3px;
+}
+pre code {
+    display:inline;
+    padding: 0 !important;
+    background-color: inherit !important;
+    border: none !important;
 }
 .post-content p {
     margin:0 0 1.1em;
