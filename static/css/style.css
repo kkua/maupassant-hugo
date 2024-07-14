@@ -99,7 +99,8 @@ mark {
 }
 pre {
     font-family:Menlo, Monaco, Consolas, "Lucida Console", "Courier New", monospace;
-    overflow:auto;
+    overflow-y: hidden;
+     overflow-x: auto;
     border: 1px solid #ddd;
     display: block;
     margin: 0px;
@@ -398,8 +399,15 @@ textarea {
     border-radius: 3px;
     margin:1.8em 0;
 }
-.post-content ul li{
+.post-content ul{
     text-indent: .5em;
+}
+.post-content li {
+	text-indent: .5em;
+}
+.post-content li p {
+    margin:0 0 1.1em;
+	text-indent: .5em;
 }
 .archive-title {
     padding-top:20px;
